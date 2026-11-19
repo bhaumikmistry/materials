@@ -1,5 +1,35 @@
 [
   {
+    "id": 3,
+    "title": "Muji black eraser",
+    "link": "https://www.muji.us/products/eraser-e5a4",
+    "domain": "muji.us",
+    "status": "own",
+    "category": "work",
+    "price": "",
+    "scrapedPrice": "",
+    "note": "The black one.",
+    "image": "https://www.muji.us/cdn/shop/products/4945247421323_org_1200x1200.jpg?v=1762442046",
+    "imageSource": "link",
+    "checked": true,
+    "createdAt": "2026-11-19T16:46:06Z"
+  },
+  {
+    "id": 2,
+    "title": "Muji gel ink pens, 0.3 and 0.5 black",
+    "link": "https://www.muji.us/products/compact-gel-ink-ballpoint-pen-knock-type-0-5-mm-black-nbe1cc4s",
+    "domain": "muji.us",
+    "status": "own",
+    "category": "work",
+    "price": "",
+    "scrapedPrice": "",
+    "note": "Both sizes, black.",
+    "image": "https://www.muji.us/cdn/shop/files/4550583693275_org_1200x1200.jpg?v=1737742934",
+    "imageSource": "link",
+    "checked": true,
+    "createdAt": "2026-11-19T16:46:01Z"
+  },
+  {
     "id": 1,
     "title": "Moleskine Cahier journals, set of 3",
     "link": "https://www.moleskine.com/shop/notebooks/journals/cahier-journals/cahier-journals-black-8055002851466.html",
