@@ -1,5 +1,20 @@
 [
   {
+    "id": 4,
+    "title": "Muji green notebook",
+    "link": "https://www.muji.us/products/compact-notebook-a7-green-naa3ca4a",
+    "domain": "muji.us",
+    "status": "own",
+    "category": "work",
+    "price": "",
+    "scrapedPrice": "",
+    "note": "With the cover and pen holder.",
+    "image": "https://www.muji.us/cdn/shop/files/4550584885945_org_1200x1200.jpg?v=1765319584",
+    "imageSource": "link",
+    "checked": true,
+    "createdAt": "2026-11-19T16:46:10Z"
+  },
+  {
     "id": 3,
     "title": "Muji black eraser",
     "link": "https://www.muji.us/products/eraser-e5a4",
