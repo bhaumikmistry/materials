@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "Moleskine Cahier journals, set of 3",
+    "link": "https://www.moleskine.com/shop/notebooks/journals/cahier-journals/cahier-journals-black-8055002851466.html",
+    "domain": "moleskine.com",
+    "status": "own",
+    "category": "work",
+    "price": "",
+    "scrapedPrice": "",
+    "note": "Small, the 3 pack.",
+    "image": "https://www.moleskine.com/on/demandware.static/-/Sites-masterCatalog_Moleskine/default/dw804cfe2d/images/large/gtin_8055002851442_01.jpg",
+    "imageSource": "link",
+    "checked": true,
+    "createdAt": "2026-11-19T16:45:10Z"
+  }
+]
