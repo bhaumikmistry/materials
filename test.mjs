@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { parseIssue, formSections, isPublicUrl, readPage, formatPrice, firstImage } from './lib.mjs'
+import { parseIssue, formSections, isPublicUrl, readPage, formatPrice, firstImage, isGenericImage } from './lib.mjs'
 
 const form = (o) =>
   `### Link\n\n${o.link}\n\n### Status\n\n${o.status}\n\n### Category\n\n${o.category}\n\n### Price\n\n${o.price || '_No response_'}\n\n### Note\n\n${o.note || '_No response_'}\n\n### Photo\n\n${o.photo || '_No response_'}`
@@ -79,4 +79,11 @@ test('prices format, unknown currencies keep their code, nonsense is dropped', (
   assert.equal(formatPrice('120', 'CHF'), 'CHF 120')
   assert.equal(formatPrice('free', 'USD'), '')
   assert.equal(formatPrice('0', 'USD'), '')
+})
+
+test('a store logo or placeholder is not a product picture', () => {
+  assert.equal(isGenericImage('https://m.media-amazon.com/images/G/01/share-icons/previewdoh/amazon.png'), true)
+  assert.equal(isGenericImage('https://m.media-amazon.com/images/I/513vJrvGQiL.jpg'), false)
+  const html = `<meta property="og:image" content="https://m.media-amazon.com/images/G/01/share-icons/previewdoh/amazon.png">`
+  assert.deepEqual(readPage(html, 'https://www.amazon.com/dp/X'), { image: '', price: '' })
 })

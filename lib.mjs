@@ -138,6 +138,16 @@ export function formatPrice(amount, currency) {
   return currency ? `${currency.toUpperCase()} ${num}` : ''
 }
 
+/**
+ * Some stores answer a script with their logo or a stock placeholder in place
+ * of the product. Amazon does it with a share icon. A picture like that is no
+ * picture, so it is refused and the photo pasted into the issue takes over.
+ */
+const GENERIC_IMAGES = [/\/share-icons\//i, /\/previewdoh\//i, /\/amazon-logo/i, /\/placeholder/i, /\/default[-_]?image/i]
+export function isGenericImage(url) {
+  return GENERIC_IMAGES.some((re) => re.test(url || ''))
+}
+
 /** What a product page says about itself: a picture and, if it shares one, a price. */
 export function readPage(html, pageUrl) {
   let image = metaContent(html, ['og:image:secure_url', 'og:image', 'twitter:image', 'twitter:image:src'])
@@ -150,5 +160,6 @@ export function readPage(html, pageUrl) {
   }
   const amount = metaContent(html, ['product:price:amount', 'og:price:amount'])
   const currency = metaContent(html, ['product:price:currency', 'og:price:currency'])
-  return { image: /^https?:\/\//.test(image) ? image : '', price: amount ? formatPrice(amount, currency) : '' }
+  const ok = /^https?:\/\//.test(image) && !isGenericImage(image)
+  return { image: ok ? image : '', price: amount ? formatPrice(amount, currency) : '' }
 }

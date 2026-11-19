@@ -7,7 +7,7 @@
  * fallback for pages that have none.
  */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
-import { parseIssue, isPublicUrl, readPage } from './lib.mjs'
+import { parseIssue, isPublicUrl, readPage, isGenericImage } from './lib.mjs'
 
 const [OWNER, NAME] = (process.env.GITHUB_REPOSITORY || 'bhaumikmistry/materials').split('/')
 const TOKEN = process.env.GITHUB_TOKEN
@@ -79,12 +79,14 @@ async function main() {
     const old = before.get(issue.number)
     const sameLink = old && old.link === p.link
 
-    let image = sameLink && old.imageSource === 'link' ? old.image : ''
+    // A cached picture that is now known to be generic is dropped, and the link read again.
+    const staleGeneric = Boolean(sameLink && isGenericImage(old.image))
+    let image = sameLink && old.imageSource === 'link' && !staleGeneric ? old.image : ''
     let price = p.price || (sameLink ? old.scrapedPrice || '' : '')
     let scrapedPrice = sameLink ? old.scrapedPrice || '' : ''
     // Only a link that was actually read counts as seen, so a page that was
     // down on one run is tried again on the next.
-    let checked = Boolean(sameLink && old.checked)
+    let checked = Boolean(sameLink && old.checked && !staleGeneric)
 
     if (p.link && isPublicUrl(p.link) && !checked) {
       visited++
