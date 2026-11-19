@@ -1,0 +1,40 @@
+name: Object
+description: Something I own, or something I want
+body:
+  - type: input
+    id: link
+    attributes:
+      label: Link
+      description: Where it is sold or made. The picture and price are read from here.
+      placeholder: https://
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options: [Own, Want]
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options: [Live, Work, Play, Eat, Wear, Care]
+    validations:
+      required: true
+  - type: input
+    id: price
+    attributes:
+      label: Price
+      description: Only needed if the page does not share one. Written as it should show, like $42 or ₹3,699.
+  - type: textarea
+    id: note
+    attributes:
+      label: Note
+      description: A line on why. Optional.
+  - type: textarea
+    id: photo
+    attributes:
+      label: Photo
+      description: Drag an image in. Only used when the link has no picture of its own.
